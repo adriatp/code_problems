@@ -1,0 +1,8 @@
+s = "egg", t = "add"
+true
+
+s = "foo", t = "bar"
+false
+
+s = "paper", t = "title"
+true

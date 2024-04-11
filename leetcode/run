@@ -1,0 +1,15 @@
+#!/bin/bash
+
+if [ -z "$1" ]; then
+  echo "Error: No arguments provided"
+  exit 1
+fi
+
+if [ ! -d "$1" ]; then
+  echo "Error: $1 is not a directory"
+  exit 1
+fi
+
+ARGS=$1
+
+make ARGS="$1"
