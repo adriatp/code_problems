@@ -7,7 +7,7 @@ using namespace std;
 int sumOfLeftLeavesRec(TreeNode* node, bool sumAct) {
   if (node == NULL) return 0;
   int sum=0;
-  if (sumAct) sum += node->val;
+  if (sumAct && node->left == NULL && node->right == NULL) sum += node->val;
   sum += sumOfLeftLeavesRec(node->left,true) + sumOfLeftLeavesRec(node->right,false);
   return sum;
 }
