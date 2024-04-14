@@ -52,25 +52,13 @@ int Solution::solve() {
 
 // Optimal solution
 
-// class Solution {
-// public:
-//     static int countBits(int n) {
-//     std::bitset<32> bits(n);
-//     return bits.count();
-//     }
-
-//     static bool customLess(int a, int b) {
-//         int countA = countBits(a);
-//         int countB = countBits(b);
-//         if (countA == countB) {
-//             return a < b;
-//         }
-
-//         return countA < countB;
-//     }
-
-//     std::vector<int> sortByBits(std::vector<int>& arr) {
-//         std::sort(arr.begin(), arr.end(), customLess);
-//         return arr;
-//     }
-// };
+// int sumOfLeftLeaves(TreeNode* root) {
+//   if(root==NULL){
+//     return 0;
+//   }
+//   int sum=0;
+//   if(root->left!=NULL && root->left->left==NULL && root->left->right==NULL){
+//     sum=sum+root->left->val;
+//   }
+//   return sum+sumOfLeftLeaves(root->left)+sumOfLeftLeaves(root->right);
+// }
