@@ -5,29 +5,27 @@ const readLines = async (filePath: string): Promise<string[]> => {
   return decoder.decode(data).split("\n").map(line => line.trim());
 };
 
-const errorLine = (input: string) => {
-  const allowedChars = "0123456789qwertyuiopasdfghjklzxcvbnm";
-  if ([...input].some(char => !allowedChars.includes(char))) 
-    return false;
-  for (let i = 0; i < input.length - 1; i++) {
-    if (input[i] > input[i+1])
-      return false;
+const countJumps = (instructions: string): number => {
+  const intructions: number[] = instructions.split(" ").map(Number);
+  let position = 0, jumps = 0;
+  while (position >= 0 && position < intructions.length) {
+    console.log(intructions)
+    intructions[position]++;
+    position += intructions[position] - 1;
+    jumps++;
   }
-  return true;
-}
-
-const detectError = (lines: string[]) => {
-  let errors = 0;
-  for (let i = 0; i < lines.length; i++) {
-    if (errorLine(lines[i]))
-      errors++;
-  }
-  console.log(`${errors}true${lines.length - errors}false`);
+  return jumps;
 };
 
 const main = async () => {
   const lines = await readLines("./log.txt");
-  detectError(lines);
+  let totalJumps = 0;
+  let lastJump = null;
+  for (let i=0; i<lines.length; i++) {
+    lastJump = countJumps(lines[i]);
+    totalJumps += lastJump;
+  }
+  console.log(`${totalJumps}-${lastJump}`)
 };
 
 
